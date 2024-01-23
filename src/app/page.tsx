@@ -1,17 +1,17 @@
 import { getAllPosts } from "@/lib/api";
-import MyLink from "@/components/Link";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default async function Page() {
   const allPosts = await getPostsinfo();
   // console.log(allPosts);
   return (
     <div className="ml-5">
-      <Button variant={"outline"}>Index</Button>
       <ul className="list-disc list-inside">
         {allPosts.map((post) => (
           <li key={post.path} className="text-xl">
-            <MyLink href={post.path}>{post.title}</MyLink>
+            <Link href={post.path} passHref>
+              {post.title}
+            </Link>
           </li>
         ))}
       </ul>

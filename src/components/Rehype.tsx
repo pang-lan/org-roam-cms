@@ -11,7 +11,7 @@ import Link from "next/link";
 // implementation. e.g., we can replace all <a> links to use
 // `next/link`.
 
-// @ts-expect-error: the react types are missing.
+//@ts-ignore
 const processor = unified().use(rehype2react, {
   jsx: prod.jsx,
   jsxs: prod.jsxs,
