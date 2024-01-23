@@ -4,12 +4,14 @@ import { unified } from "unified";
 import rehype2react from "rehype-react";
 import * as prod from "react/jsx-runtime";
 
-import Link from "./Link.jsx";
+import Link from "next/link";
 
 // we use rehype-react to process hast and transform it to React
 // component, which allows as replacing some of components with custom
 // implementation. e.g., we can replace all <a> links to use
 // `next/link`.
+
+// @ts-expect-error: the react types are missing.
 const processor = unified().use(rehype2react, {
   jsx: prod.jsx,
   jsxs: prod.jsxs,
@@ -21,7 +23,7 @@ const processor = unified().use(rehype2react, {
   },
 });
 
-const Rehype = ({ hast }) => {
+const Rehype = ({ hast }: any) => {
   return <>{processor.stringify(hast)}</>;
 };
 

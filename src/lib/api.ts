@@ -81,6 +81,7 @@ const loadPosts = async () => {
 
 const allPosts = async () => {
   const posts = await loadPosts();
+  //console.log("posts", posts);
   return posts;
 };
 
@@ -92,6 +93,7 @@ export async function getAllPaths() {
 export async function getPostBySlug(slug) {
   const posts = await allPosts();
   const post = await posts[slug];
+
   return post;
 }
 
